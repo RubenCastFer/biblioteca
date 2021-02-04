@@ -41,6 +41,7 @@ public class Main {
     		System.out.println("3. Baja de Libros");
     		System.out.println("4. Búsqueda de Libros");
     		System.out.println("5. Ordenacion de Libros");
+    		System.out.println("6. Salir");
     		System.out.println("Introduce la opcion:");
     	
     		opcion = leerOpcion(2);
@@ -104,8 +105,7 @@ public class Main {
     	Genero genero = Genero.getGenero(datos[2]);
     	String autor = datos[3];
     	Integer paginas = Integer.parseInt(datos[4]);
-    	
-    	
+    	libro = new Libro(titulo, isbn, genero, autor, paginas);    	
     	return libro;
     }
     

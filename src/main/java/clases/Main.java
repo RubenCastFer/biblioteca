@@ -22,9 +22,24 @@ public class Main {
 				//titulo:isbn:genero:autor:paginas
 				alta(catalogo);
 				break;
+				
 			case 2:
 				//TODO Lista de Libros
+				listadoLibro(catalogo);
 				break;
+				
+			case 3:
+				bajaLibro(catalogo);
+				break;
+				
+			case 4:
+				break;
+				
+			case 5:
+				break;
+				
+			case 6: System.exit(0);
+				
 			default:
 				break;
 			}
@@ -44,7 +59,7 @@ public class Main {
     		System.out.println("6. Salir");
     		System.out.println("Introduce la opcion:");
     	
-    		opcion = leerOpcion(2);
+    		opcion = leerOpcion(3);
     		
     	}while(opcion <=0);
     	
@@ -104,7 +119,7 @@ public class Main {
     	String isbn = datos[1];
     	Genero genero = Genero.getGenero(datos[2]);
     	String autor = datos[3];
-    	Integer paginas = Integer.parseInt(datos[4]);
+    	Integer paginas = Integer.parseInt(datos[4],10);
     	libro = new Libro(titulo, isbn, genero, autor, paginas);    	
     	return libro;
     }
@@ -114,5 +129,20 @@ public class Main {
     	Scanner teclado = new Scanner(System.in);
         opcion=teclado.nextLine();
     	return opcion;
+    }
+    
+    //recorre uno a uno los objetos de catalogo y muestra todos los datos con toString
+    private static void listadoLibro(ArrayList<Libro> catalogo) {
+    	for (int fila=0;fila<catalogo.size();fila++) {
+    		System.out.println("Libro nº "+ fila +" en el catalogo:\n"+ catalogo.get(fila).toString()+" \n");
+    	}
+    }
+    
+    private static void bajaLibro(ArrayList<Libro> catalogo) {
+    	Scanner teclado = new Scanner(System.in);
+    	System.out.println("Introduzca la posición del Libro que desea dar de baja: ");
+    	int opcion=teclado.nextInt();
+    	catalogo.remove(opcion);
+    	System.out.println("Libro borrado. ");
     }
 }

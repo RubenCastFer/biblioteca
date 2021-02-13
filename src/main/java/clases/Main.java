@@ -4,6 +4,9 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -33,9 +36,11 @@ public class Main {
 				break;
 				
 			case 4:
+				busquedaDeLibros(catalogo);
 				break;
 				
 			case 5:
+				ordenarLibros(catalogo);
 				break;
 				
 			case 6: System.exit(0);
@@ -59,7 +64,7 @@ public class Main {
     		System.out.println("6. Salir");
     		System.out.println("Introduce la opcion:");
     	
-    		opcion = leerOpcion(3);
+    		opcion = leerOpcion(5);
     		
     	}while(opcion <=0);
     	
@@ -144,5 +149,57 @@ public class Main {
     	int opcion=teclado.nextInt();
     	catalogo.remove(opcion);
     	System.out.println("Libro borrado. ");
+    }
+    
+    
+    /**
+     * Pregunta al usuario el ISBN
+     * Usa el método .indexOf de List para ver si está el Libro con el ISBN introducido (Ignora la diferencia entre mayúsculas y minúsculas)
+     * Si está muestra todos los datos del libro
+     * Si no está muestra un mensaje diciendo que el libro no está en la lista
+     * 
+     */
+    private static void busquedaDeLibros(ArrayList<Libro> catalogo) {
+    	Scanner teclado = new Scanner(System.in);
+    	System.out.println("Introduzca el ISBN del libro que desea encontrar. ");
+    	String buscar = teclado.nextLine();
+    	int resultado= Libro.getIsbn().indexOf(buscar);
+    	if(resultado!=-1) {
+    		System.out.println(catalogo.get(resultado).toString());
+    	} else{
+    		System.out.println("El libro no esta en el catalogo");
+    	}
+    }
+    
+    /**
+     * Pide al usuario si desea ordenar por título o por Número de Páginas
+     *
+     * Para ordenar por título alfabéticamente se debe usar el método 
+     * sort de la Clase Collections por orden natural
+     * 
+     * Para ordenar por número de Páginas se debe usar el método 
+     * sort de Collections que recibe un comparator.
+     */
+    
+    private static void ordenarLibros(ArrayList<Libro> catalogo) {
+    	Scanner teclado = new Scanner(System.in);
+
+    	System.out.println("De que forma desea ordenar el catalogo, por el título o por el número de páginas. \n(titulo/paginas): ");
+    	String respuesta= teclado.next();
+    	if (respuesta.equalsIgnoreCase("titulo")) {
+    		Collections.sort(catalogo, new Comparator<Libro>() {
+    			public int compare(Libro obj1, Libro obj2) {
+    			      return obj1.getTitulo().compareTo(obj2.getTitulo());
+    			}
+			});
+    	}
+    	
+    	if (respuesta.equalsIgnoreCase("paginas")) {
+    		Collections.sort(catalogo, new Comparator<Libro>() {
+    			public int compare(Libro obj1, Libro obj2) {
+    			      return obj1.getPaginas().compareTo(obj2.getPaginas());
+    			}
+			});
+    	}
     }
 }

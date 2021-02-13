@@ -202,4 +202,24 @@ public class Main {
 			});
     	}
     }
+    
+    /**
+     * Pide al usuario el  nombre del fichero a crear o sobrescribir
+     * Guarda en el fichero una línea con cada libro del catálogo con el siguiente formato
+     * titulo,isbn,genero,autor,num_paginas
+     */
+    
+    //salvar a fichero
+    
+    
+    /**
+     * Pide al usuario el  nombre del fichero a leer
+     * Indica un mensaje de error en caso de que el fichero no exista
+     * Lee todo el fichero y mete un libro en el catálogo por cada línea
+     */
+    
+    //cargar fichero
+    
+    
+    //Limpiar catálogo
 }

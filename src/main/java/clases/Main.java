@@ -124,7 +124,7 @@ public class Main {
     	String isbn = datos[1];
     	Genero genero = Genero.getGenero(datos[2]);
     	String autor = datos[3];
-    	Integer paginas = Integer.parseInt(datos[4],10);
+    	Integer paginas = Integer.parseInt(datos[4]);
     	libro = new Libro(titulo, isbn, genero, autor, paginas);    	
     	return libro;
     }
@@ -163,7 +163,9 @@ public class Main {
     	Scanner teclado = new Scanner(System.in);
     	System.out.println("Introduzca el ISBN del libro que desea encontrar. ");
     	String buscar = teclado.nextLine();
-    	int resultado= Libro.getIsbn().indexOf(buscar);
+    	Libro a = new Libro();
+    	a.setIsbn(buscar);
+    	int resultado= catalogo.indexOf(a);
     	if(resultado!=-1) {
     		System.out.println(catalogo.get(resultado).toString());
     	} else{

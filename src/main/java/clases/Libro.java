@@ -3,7 +3,7 @@ package clases;
 public class Libro {
 	
 	private String titulo;
-	private static String isbn;
+	private String isbn;
 	private Genero genero;
 	private String autor;
 	private Integer paginas;
@@ -32,7 +32,7 @@ public class Libro {
 		this.isbn=isbn;
 	}
 	
-	public static String getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 	
@@ -72,8 +72,7 @@ public class Libro {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((paginas == null) ? 0 : paginas.hashCode());
-		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
 		return result;
 	}
 
@@ -86,18 +85,15 @@ public class Libro {
 		if (getClass() != obj.getClass())
 			return false;
 		Libro other = (Libro) obj;
-		if (paginas == null) {
-			if (other.paginas != null)
+		if (isbn == null) {
+			if (other.isbn != null)
 				return false;
-		} else if (!paginas.equals(other.paginas))
-			return false;
-		if (titulo == null) {
-			if (other.titulo != null)
-				return false;
-		} else if (!titulo.equalsIgnoreCase(other.titulo))
+		} else if (!isbn.equalsIgnoreCase(other.isbn))
 			return false;
 		return true;
 	}
+
+	
 
 	
 	

@@ -3,6 +3,7 @@
  */
 package clases;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,7 +46,19 @@ public class Main {
 				ordenarLibros(catalogo);
 				break;
 				
-			case 6: System.exit(0);
+			case 6:
+				guardadFichero(catalogo);
+				break;
+				
+			case 7:
+				
+				break;
+				
+			case 8:
+				
+				break;
+				
+			case 9: System.exit(0);
 				
 			default:
 				break;
@@ -66,7 +79,7 @@ public class Main {
     		System.out.println("6. Salir");
     		System.out.println("Introduce la opcion:");
     	
-    		opcion = leerOpcion(5);
+    		opcion = leerOpcion(8);
     		
     	}while(opcion <=0);
     	
@@ -208,11 +221,20 @@ public class Main {
     
     //salvar a fichero
     private static void guardadFichero(ArrayList<Libro> catalogo) {
-    	//try {
-			//FileWriter guardarCatalogo = new FileWriter()
-		//} catch (IOException e) {
-			// TODO: handle exception
-		//}
+    	Scanner teclado = new Scanner(System.in);
+    	System.out.println("Introduce el nombre del archivo terminado en .txt");
+    	String resultado= teclado.next();
+    	try {
+			FileWriter guardarCatalogo = new FileWriter(resultado);
+			for(int i=0;i<catalogo.size();i++) {
+				guardarCatalogo.write(catalogo.get(i).getTitulo()+ "," +catalogo.get(i).getIsbn()+ "," +catalogo.get(i).getGenero()+ "," +catalogo.get(i).getAutor()+ "," +catalogo.get(i).getPaginas()+"/n");
+			}
+			guardarCatalogo.close();
+			System.out.println("El archivo "+resultado+" se ha guardado correctamente.");
+		} catch (IOException e) {
+			 //TODO: handle exception
+			System.out.println("Ha ocurrido un error.");
+		}
     }
     
     /**
@@ -222,7 +244,32 @@ public class Main {
      */
     
     //cargar fichero
-
+    private static void cargarFicheros(ArrayList<Libro> catalogo) {
+    	Scanner teclado = new Scanner(System.in);
+    	System.out.println("Introduce el nombre del archivo terminado en .txt");
+    	String resultado= teclado.next();
+    	try {
+			File cargarFichero=new File(resultado);
+			Scanner Fichero = new Scanner(cargarFichero);
+			while (Fichero.hasNextLine()) {
+		        String entrada = Fichero.nextLine();
+		        String [] datos = entrada.split(",");		        
+		       
+		        Libro libro = null;
+		        
+		    	String titulo = datos[0];
+		    	String isbn = datos[1];
+		    	Genero genero = Genero.getGenero(datos[2]);
+		    	String autor = datos[3];
+		    	Integer paginas = Integer.parseInt(datos[4]);
+		    	libro = new Libro(titulo, isbn, genero, autor, paginas);    	
+		    	
+		    	catalogo.add(libro);
+			}
+		} catch (IOException e) {
+			// TODO: handle exception
+		}
+    }
     
     //Limpiar catálogo
 }

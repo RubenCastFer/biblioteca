@@ -3,6 +3,8 @@
  */
 package clases;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -189,19 +191,12 @@ public class Main {
     	System.out.println("De que forma desea ordenar el catalogo, por el título o por el número de páginas. \n(titulo/paginas): ");
     	String respuesta= teclado.next();
     	if (respuesta.equalsIgnoreCase("titulo")) {
-    		Collections.sort(catalogo, new Comparator<Libro>() {
-    			public int compare(Libro obj1, Libro obj2) {
-    			      return obj1.getTitulo().compareTo(obj2.getTitulo());
-    			}
-			});
+    		
+    		Collections.sort((List<Libro>) catalogo);
     	}
     	
     	if (respuesta.equalsIgnoreCase("paginas")) {
-    		Collections.sort(catalogo, new Comparator<Libro>() {
-    			public int compare(Libro obj1, Libro obj2) {
-    			      return obj1.getPaginas().compareTo(obj2.getPaginas());
-    			}
-			});
+    		Collections.sort((List<Libro>)catalogo, Comparator<Libro> catalogo );
     	}
     }
     
@@ -212,7 +207,13 @@ public class Main {
      */
     
     //salvar a fichero
-    
+    private static void guardadFichero(ArrayList<Libro> catalogo) {
+    	//try {
+			//FileWriter guardarCatalogo = new FileWriter()
+		//} catch (IOException e) {
+			// TODO: handle exception
+		//}
+    }
     
     /**
      * Pide al usuario el  nombre del fichero a leer
@@ -221,7 +222,7 @@ public class Main {
      */
     
     //cargar fichero
-    
+
     
     //Limpiar catálogo
 }

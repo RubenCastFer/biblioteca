@@ -1,6 +1,8 @@
 package clases;
 
-public class Libro {
+import java.util.Comparator;
+
+public class Libro implements java.lang.Comparable<Libro>, Comparator <Libro>{
 	
 	private String titulo;
 	private String isbn;
@@ -92,9 +94,22 @@ public class Libro {
 			return false;
 		return true;
 	}
-
 	
 
+
+	@Override
+	public int compare(Libro lib1, Libro lib2) {
+		// TODO Auto-generated method stub
+		int resultado = lib1.getPaginas().compareTo(lib2.getPaginas());
+		return resultado;
+	}
+
+	@Override
+	public int compareTo(Libro otro) {
+		int resultado = this.getPaginas().compareTo(otro.getPaginas());
+		return resultado;
+	}
+	
 	
 	
 	//m equal y cadena.equalsignorecase()

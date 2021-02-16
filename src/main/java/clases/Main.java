@@ -196,7 +196,7 @@ public class Main {
     	}
     	
     	if (respuesta.equalsIgnoreCase("paginas")) {
-    		Collections.sort((List<Libro>)catalogo, Comparator<Libro> catalogo );
+    		Collections.sort(catalogo, new Libro());
     	}
     }
     

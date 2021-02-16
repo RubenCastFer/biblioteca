@@ -100,13 +100,13 @@ public class Libro implements java.lang.Comparable<Libro>, Comparator <Libro>{
 	@Override
 	public int compare(Libro lib1, Libro lib2) {
 		// TODO Auto-generated method stub
-		int resultado = lib1.getPaginas().compareTo(lib2.getPaginas());
+		int resultado = lib1.getPaginas()-lib2.getPaginas();
 		return resultado;
 	}
 
 	@Override
 	public int compareTo(Libro otro) {
-		int resultado = this.getPaginas().compareTo(otro.getPaginas());
+		int resultado = this.getTitulo().compareTo(otro.getTitulo());
 		return resultado;
 	}
 	

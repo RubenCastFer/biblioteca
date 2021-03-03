@@ -51,7 +51,7 @@ public class Main {
 				break;
 				
 			case 7:
-				
+				cargarFicheros(catalogo);
 				break;
 				
 			case 8:
@@ -76,7 +76,9 @@ public class Main {
     		System.out.println("3. Baja de Libros");
     		System.out.println("4. Búsqueda de Libros");
     		System.out.println("5. Ordenacion de Libros");
-    		System.out.println("6. Salir");
+    		System.out.println("6. Guardar Fichero");
+    		System.out.println("7. Cargar Fichero");
+    		System.out.println("9. Salir");
     		System.out.println("Introduce la opcion:");
     	
     		opcion = leerOpcion(8);

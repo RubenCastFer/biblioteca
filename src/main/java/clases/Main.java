@@ -3,17 +3,16 @@
  */
 package clases;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
-
+import  java.io.File ;
+import  java.io.FileWriter ;
+import  java.io.IOException ;
+import  java.util.ArrayList ;
+import  java.util.Collections ;
+import  java.util.InputMismatchException ;
+import  java.util.List ;
+import  java.util.Scanner ;
+import java.util.regex.Matcher ;
+import java.util.regex.Pattern ;
 public class Main {
     
     public static void main (String [] args) {
@@ -55,7 +54,7 @@ public class Main {
 				break;
 				
 			case 8:
-				
+				limpiarCatalogo(catalogo);
 				break;
 				
 			case 9: System.exit(0);
@@ -78,6 +77,7 @@ public class Main {
     		System.out.println("5. Ordenacion de Libros");
     		System.out.println("6. Guardar Fichero");
     		System.out.println("7. Cargar Fichero");
+    		System.out.println("8. Borrar todos los libros");
     		System.out.println("9. Salir");
     		System.out.println("Introduce la opcion:");
     	
@@ -121,9 +121,45 @@ public class Main {
     		System.out.println("Introduce los datos de un libro.");
     		System.out.println("Usa el formato \"titulo:isbn:genero:autor:paginas\"");
     		try {
+    			
     			datos = leerCadena();
-    			if(true)//Supongo de momento que valida siempre
+    		   /* 
+    			String [] dato = datos.split(":");
+    	    	
+    	    	String titulo = dato[0];
+    	    	String isbn = dato[1];
+    	    	String genero = dato[2];
+    	    	String autor = dato[3];
+    	    	String paginas = dato[4];
+    	    	
+    	    	
+    	    	String patronTitulo ="\\w+\\s*";
+    	    	String patronIsbn ="((\\w{1,2})\\d)";
+    	    	String patronGenero ="(NOVELA|POESIA|FICCION)";
+    	    	String patronAutor ="((\\w)+(\\s)*)";
+    	    	String numero1_4 ="(\\d{1,4})";
+    			
+    	    	Pattern tituloPatron = Pattern.compile(patronTitulo, Pattern.CASE_INSENSITIVE);
+    		    Matcher tituloConForma = tituloPatron.matcher(titulo);
+    		    
+    	    	Pattern isbnPatron = Pattern.compile(patronIsbn, Pattern.CASE_INSENSITIVE);
+    		    Matcher isbnConForma = isbnPatron.matcher(isbn);
+    		    
+    	    	Pattern generoPatron = Pattern.compile(patronGenero, Pattern.CASE_INSENSITIVE);
+    		    Matcher generoConForma = generoPatron.matcher(genero);
+    		    
+    	    	Pattern autorPatron = Pattern.compile(patronAutor, Pattern.CASE_INSENSITIVE);
+    		    Matcher autorConForma = autorPatron.matcher(autor);
+    		    
+    		    Pattern paginaPatron = Pattern.compile(numero1_4);
+    		    Matcher paginaConForma = paginaPatron.matcher(paginas);
+    		    //boolean funciona = paginaConForma.find();
+    			System.out.println(tituloConForma.find());
+
+    		   */
+    		   if(true)//Supongo de momento que valida siempre
     				validado=true;
+
     		}catch (InputMismatchException e) {
 				System.out.println("Datos de entrada no válidos");
 			}
@@ -274,4 +310,10 @@ public class Main {
     }
     
     //Limpiar catálogo
+    
+    private static void limpiarCatalogo(ArrayList<Libro> catalogo) {
+    	
+    	catalogo.clear();
+    	System.out.println("El listado de libros a sido borrado con exito.");
+    }
 }
